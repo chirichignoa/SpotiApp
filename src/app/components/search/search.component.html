@@ -1,0 +1,27 @@
+<div class="container top-30">
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <!--con [()] digo que escuchare y mandare eventos desde el componente  -->
+      <label for="term"> Search a artist</label>
+      <input [(ngModel)]="term"
+      (keyup)="searchArtist()"
+      class="form-control" type="text" name="term" value="" placeholder="Search for artist">
+      <hr>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-3 text-center puntero"
+          [routerLink]="['/artist',artist.id]"
+         *ngFor="let artist of spotifyService.artists">
+          <img [src]="artist.images | withoutphoto" alt="" class="img-fluid img-thumbnail">
+          <p>{{artist.name}}</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
